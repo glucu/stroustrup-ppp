@@ -1,3 +1,4 @@
+
 //
 // This is example code from Chapter 6.7 "Trying the second version" of
 // "Software - Principles and Practice using C++" by Bjarne Stroustrup
@@ -16,15 +17,31 @@
 
 */
 
-
 #include "../include/std_lib_facilities.h"
 
 //------------------------------------------------------------------------------
 
-class Token {
+/* COMMENT:
+ *
+ * 5 Errors:
+ * - class Token: missing the letter 'c' in class keyword
+ * - get(): should be: Token Token_stream::get()
+ * - primary(): missing terminating qoute in error("')' expected)
+ * - expression(): missing closing ')' of call to term()
+ * - int main(): Undefined variable val
+
+ * Logic Errors:
+ * - get(): missing case '8' label
+ * - term(): missing break in case '*':
+ * - expression(): In case '-', adds instead of substracting
+ * - int main(): else clause needs to have block scope
+ */
+
+/*
+class Token{
 public:
     char kind;        // what kind of token
-    double value;     // for numbers: a value 
+    double value;     // for numbers: a value
     Token(char ch)    // make a Token from a char
         :kind(ch), value(0) { }
     Token(char ch, double val)     // make a Token from a char and a double
@@ -66,7 +83,7 @@ void Token_stream::putback(Token t)
 Token Token_stream::get()
 {
     if (full) {       // do we already have a Token ready?
-        // remove token from buffer
+                      // remove token from buffer
         full = false;
         return buffer;
     }
@@ -95,7 +112,7 @@ Token Token_stream::get()
 
 //------------------------------------------------------------------------------
 
-Token_stream ts;        // provides get() and putback() 
+Token_stream ts;        // provides get() and putback()
 
 //------------------------------------------------------------------------------
 
@@ -113,10 +130,11 @@ double primary()
         double d = expression();
         t = ts.get();
         if (t.kind != ')') error("')' expected");
-            return d;
+        return d;
     }
     case '8':            // we use '8' to represent a number
         return t.value;  // return the number's value
+
     default:
         error("primary expected");
     }
@@ -135,7 +153,7 @@ double term()
         case '*':
             left *= primary();
             t = ts.get();
-	        break;
+        break;
         case '/':
         {
             double d = primary();
@@ -178,41 +196,38 @@ double expression()
 
 //------------------------------------------------------------------------------
 
-constexpr char quit{'x'};
-constexpr char display{'='};
+int main()
+try
+{
+    std::cout << "Welcome to our simple calculator!\n";
+    std::cout << "*********************************\n\n";
+    std::cout << "Please enter expression using floating-point numbers.\n";
+    std::cout << "Operators: +, -, *, and / (followed by 'x' to quit or '=' to print):\n";
 
-int main() {
-    try
-    {
-        std::cout << "Welcome to our simple calculator.\n";
-        std::cout << "Please enter expressions using floating-point numbers.\n";
-        std::cout << "Avaiable operators: +, -, *, and /.\n";
-        std::cout << "End expression with " << quit << " and display the results with " << display << '\n';
+    double val{};
+    while (cin) {
+        Token t = ts.get();
 
-        double val{};
-        while (cin) {
-            Token t = ts.get();
-
-            if (t.kind == quit) break;     // 'q' for quit
-            if (t.kind == display)        // ';' for "print now"
-                cout << display << val << '\n';
-            else {
-                ts.putback(t);
-                val = expression();
-            }
+        if (t.kind == 'x') break; // 'q' for quit
+        if (t.kind == '=')        // ';' for "print now"
+            cout << "=" << val << '\n';
+        else {
+            ts.putback(t);
+            val = expression();
         }
-        keep_window_open();
     }
-    catch (exception& e) {
-        cerr << "error: " << e.what() << '\n';
-        keep_window_open();
-        return 1;
-    }
-    catch (...) {
-        cerr << "Oops: unknown exception!\n";
-        keep_window_open();
-        return 2;
-    }
+    keep_window_open();
+}
+catch (exception& e) {
+    cerr << "error: " << e.what() << '\n';
+    keep_window_open();
+    return 1;
+}
+catch (...) {
+    cerr << "Oops: unknown exception!\n";
+    keep_window_open();
+    return 2;
 }
 
 //------------------------------------------------------------------------------
+*/
