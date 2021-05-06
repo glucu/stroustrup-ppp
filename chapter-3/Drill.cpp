@@ -1,7 +1,6 @@
-#include <iostream>
-#include <string>
+#include "../include/std_lib_facilities.h"
 
-/*int main() {
+int main() {
 
     std::cout << "Enter the name of the person you want to write to (followed by 'enter'):\n";
     std::string first_name;
@@ -44,4 +43,4 @@
     std::cout << "  Gabriel\n";
 
     return 0;
-}*/
+}
