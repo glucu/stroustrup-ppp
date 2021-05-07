@@ -10,7 +10,7 @@
     I have inserted 5 errors that should cause this not to compile
     I have inserted 3 logic errors that should cause the program to give wrong results
 
-    First try to find an remove the bugs without looking in the book.
+    First try to find and remove the bugs without looking in the book.
     If that gets tedious, compare the code to that in the book (or posted source code)
 
     Happy hunting!
@@ -21,27 +21,24 @@
 
 //------------------------------------------------------------------------------
 
-/* COMMENT:
- *
- * 5 Errors:
- * - class Token: missing the letter 'c' in class keyword
- * - get(): should be: Token Token_stream::get()
- * - primary(): missing terminating qoute in error("')' expected)
- * - expression(): missing closing ')' of call to term()
- * - int main(): Undefined variable val
+/* compile-time errors:
+ * 1. lass Token --> class Token
+ * 2. Token get() --> Token Token_stream::get() {...}
+ * 3. double expression(): missing closing ')' for call to term().
+ * 4. int main(): undeclared variable 'val'. Declare it before while statement.
 
- * Logic Errors:
- * - get(): missing case '8' label
- * - term(): missing break in case '*':
- * - expression(): In case '-', adds instead of substracting
- * - int main(): else clause needs to have block scope
+ * logic error:
+ * 1. Token Token_stream::get(): missing case label for '8'.
+ * 2. double primary(): missing closing double quote inside error("')' expected);
+ * 3. double term(): missing break statement inside case '*':
+ * 4. double expression(): inside case '-', it adds instead of substracting. 
+ * 5. int main(): else clause should use braces for scoping.
  */
 
-/*
-class Token{
+class Token {
 public:
     char kind;        // what kind of token
-    double value;     // for numbers: a value
+    double value;     // for numbers: a value 
     Token(char ch)    // make a Token from a char
         :kind(ch), value(0) { }
     Token(char ch, double val)     // make a Token from a char and a double
@@ -65,14 +62,13 @@ private:
 // The constructor just sets full to indicate that the buffer is empty:
 Token_stream::Token_stream()
     :full(false), buffer(0)    // no Token in buffer
-{
-}
+{ }
 
 //------------------------------------------------------------------------------
 
 // The putback() member function puts its argument back into the Token_stream's buffer:
-void Token_stream::putback(Token t)
-{
+void Token_stream::putback(Token t) {
+
     if (full) error("putback() into a full buffer");
     buffer = t;       // copy t to buffer
     full = true;      // buffer is now full
@@ -80,10 +76,10 @@ void Token_stream::putback(Token t)
 
 //------------------------------------------------------------------------------
 
-Token Token_stream::get()
-{
+Token Token_stream::get() {
+
     if (full) {       // do we already have a Token ready?
-                      // remove token from buffer
+        // remove token from buffer
         full = false;
         return buffer;
     }
@@ -98,8 +94,8 @@ Token Token_stream::get()
         return Token(ch);        // let each character represent itself
     case '.':
     case '0': case '1': case '2': case '3': case '4':
-    case '5': case '6': case '7': case '8': case '9':
-    {
+    case '5': case '6': case '7': case '8': case '9': {
+
         cin.putback(ch);         // put digit back into the input stream
         double val;
         cin >> val;              // read a floating-point number
@@ -112,7 +108,7 @@ Token Token_stream::get()
 
 //------------------------------------------------------------------------------
 
-Token_stream ts;        // provides get() and putback()
+Token_stream ts;        // provides get() and putback() 
 
 //------------------------------------------------------------------------------
 
@@ -121,8 +117,8 @@ double expression();    // declaration so that primary() can call expression()
 //------------------------------------------------------------------------------
 
 // deal with numbers and parentheses
-double primary()
-{
+double primary() {
+
     Token t = ts.get();
     switch (t.kind) {
     case '(':    // handle '(' expression ')'
@@ -134,7 +130,6 @@ double primary()
     }
     case '8':            // we use '8' to represent a number
         return t.value;  // return the number's value
-
     default:
         error("primary expected");
     }
@@ -143,8 +138,8 @@ double primary()
 //------------------------------------------------------------------------------
 
 // deal with *, /, and %
-double term()
-{
+double term() {
+
     double left = primary();
     Token t = ts.get();        // get the next token from token stream
 
@@ -153,9 +148,9 @@ double term()
         case '*':
             left *= primary();
             t = ts.get();
-        break;
-        case '/':
-        {
+	    break;
+        case '/': {
+
             double d = primary();
             if (d == 0) error("divide by zero");
             left /= d;
@@ -172,8 +167,8 @@ double term()
 //------------------------------------------------------------------------------
 
 // deal with + and -
-double expression()
-{
+double expression() {
+
     double left = term();      // read and evaluate a Term
     Token t = ts.get();        // get the next token from token stream
 
@@ -196,38 +191,39 @@ double expression()
 
 //------------------------------------------------------------------------------
 
-int main()
-try
-{
-    std::cout << "Welcome to our simple calculator!\n";
-    std::cout << "*********************************\n\n";
-    std::cout << "Please enter expression using floating-point numbers.\n";
-    std::cout << "Operators: +, -, *, and / (followed by 'x' to quit or '=' to print):\n";
+int main() {
+    
+    try {
 
-    double val{};
-    while (cin) {
-        Token t = ts.get();
+        cout << "Welcome to our simple calculator.\n";
+        cout << "Please enter expressions using floating-point numbers.\n";
+        cout << "Available operators: +, -, *, and /.\n";
+        cout << "'x' to quit or '=' to print.\n";
 
-        if (t.kind == 'x') break; // 'q' for quit
-        if (t.kind == '=')        // ';' for "print now"
-            cout << "=" << val << '\n';
-        else {
-            ts.putback(t);
-            val = expression();
+        double val{};
+        while (cin) {
+            Token t = ts.get();
+
+            if (t.kind == 'x') break; // 'q' for quit
+            if (t.kind == '=')        // ';' for "print now"
+                cout << "=" << val << '\n';
+            else {
+                ts.putback(t);
+                val = expression();
+            }
         }
+        keep_window_open();
     }
-    keep_window_open();
-}
-catch (exception& e) {
-    cerr << "error: " << e.what() << '\n';
-    keep_window_open();
-    return 1;
-}
-catch (...) {
-    cerr << "Oops: unknown exception!\n";
-    keep_window_open();
-    return 2;
+    catch (exception& e) {
+        cerr << "error: " << e.what() << '\n';
+        keep_window_open();
+        return 1;
+    }
+    catch (...) {
+        cerr << "Oops: unknown exception!\n";
+        keep_window_open();
+        return 2;
+    }
 }
 
 //------------------------------------------------------------------------------
-*/
