@@ -8,16 +8,13 @@
 
 void print(const std::vector<int> &vi, const std::string &label) {
 // prints out the integers of the vector vi
-// pre-condition: size of vector must be at least one.
 
-    if(vi.size() == 0) return;
-
-    std::cout << label << ": {";
+    std::cout << label << ": { ";
     for(size_t i{}; i < vi.size(); ++i) {
         std::cout << vi[i];
         if(i != vi.size()-1) std::cout << ", ";
     }
-    std::cout << '}';
+    std::cout << " }\n";
 }
 
 std::vector<int> init(int n, int min, int max) {
