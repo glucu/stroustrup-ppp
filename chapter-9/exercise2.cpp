@@ -89,9 +89,11 @@ void Name_pairs::read_ages() {
 }
 
 void Name_pairs::sort() {
+// sort name vector alphabetically with matching age
+// pre-condition: vectors must be the same size
 
   std::vector<std::string> tmp_n{ name };
-	vector<double> tmp_d{ age };
+	std::vector<double> tmp_d{ age };
 
 	std::sort(tmp_n.begin(), tmp_n.end());
 
@@ -109,6 +111,8 @@ void Name_pairs::sort() {
 }
 
 void Name_pairs::print() const {
+// prints out the name-age pairs in
+// (name,age) format.
 
   for(size_t i{}; i < name.size(); ++i) {
     std::cout << '(' << name[i] << ',' << age[i] << ")\n";
