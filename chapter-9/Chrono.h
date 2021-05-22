@@ -20,22 +20,21 @@ namespace chrono {
 
 
         // nonmodifying operations:
-        int day() const { return d; }
-        Month month() const { return m; };
-        int year() const { return y; }
+        int   day()     const { return d; }
+        Month month()   const { return m; };
+        int   year()    const { return y; }
 
         // modifying operations:
         void add_day(int n);
         void add_month(int n);
         void add_year(int n);
 
-    private:
-        int y;
-        Month m;
-        int d;
+    private:                            
+        int y;                          // year
+        Month m;                        // month
+        int d;                          // day
     };
 
-    // helper functions
     bool is_date(int y, Month m, int d);   // true for valid date
     bool leapyear(int y);                  // true if y is a leap year
 
@@ -45,7 +44,6 @@ namespace chrono {
     std::ostream& operator<<(std::ostream &os, const Date &d);
     std::istream& operator>>(std::istream &is, Date &d);
 
-} // namespace chrono
-
+}   // namespace chrono
 
 #endif // CHRONO_H
