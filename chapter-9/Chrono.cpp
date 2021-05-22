@@ -1,7 +1,7 @@
 #include "Chrono.h"
 
 namespace chrono {
-    // member function definitions
+// member function definitions:
 
     Date::Date(int y, Month m, int d)
          : y{y}, m{m}, d{d} {
@@ -40,10 +40,9 @@ namespace chrono {
         y += n;
     }
 
-    // helper functions
+    // helper functions:
 
     bool is_date(int y, Month m, int d) {
-
         // assume that y is valid
 
         if(d <= 0) return false;        // d must be positive
@@ -85,7 +84,7 @@ namespace chrono {
     std::ostream& operator<<(std::ostream &os, const Date &d) {
 
         return os << '(' << d.year()
-                  << ',' << d.month()
+                  << ',' << int(d.month())
                   << ',' << d.day() << ')';
     }
     std::istream& operator>>(std::istream &is, Date &dd) {
