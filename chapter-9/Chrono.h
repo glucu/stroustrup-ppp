@@ -1,8 +1,8 @@
 #ifndef CHRONO_H
 #define CHRONO_H
 
-#include <ostream>
-#include <istream>
+#include "../include/std_lib_facilities.h"
+
 
 namespace chrono {
 
