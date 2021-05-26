@@ -65,8 +65,8 @@ namespace chrono {
     }
 
     bool leapyear(int y) {
-
-        // see exercise 10
+        
+        return ((y % 4 == 0) && (y % 100 != 0)) || (y % 400 == 0);
     }
 
     bool operator==(const Date &a, const Date &b) {
@@ -107,6 +107,7 @@ namespace chrono {
         kSunday, kMonday, kTuesday, kWednesday, kThursday, kFriday, kSaturday
     };
 
+    
     Day day_of_week(const Date &d) {
 
         // ...
@@ -121,5 +122,6 @@ namespace chrono {
 
         // ...
     }
+    
     
 }   // namespace chrono
