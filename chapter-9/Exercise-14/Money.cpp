@@ -1,13 +1,5 @@
 #include "Money.h"
 
-// run-time checked narrowing cast (type conversion). See ???.
-template<class R, class A> R narrow_cast(const A& a)
-{
-    R r = R(a);
-    if (A(r) != a)// error(string("info loss"));
-    return r;
-}
-
 Money::Money()
     : m_money{ 0 } { }
 
@@ -17,7 +9,7 @@ Money::Money(long int c)
 Money::Money(int d, int c)
     : m_money{ d * 100 + c }
 {
-   // if (c >= 100) //error("Money(): cent must be between 0-99");
+    if (c >= 100) error("Money(): cent must be between 0-99");
 }
 
 long int my_round(double d) {
@@ -47,14 +39,14 @@ Money operator*(double lhs, const Money& rhs) {
 
 Money operator/(const Money& lhs, double rhs) {
 
-    if (rhs == 0) // TODO
+    if (rhs == 0) error("operator/: Divide by zero");
 
     return Money{ my_round(lhs.get_amount() / rhs) };
 }
 
 double operator/(const Money& lhs, const Money& rhs) {
 
-    if (rhs.get_amount() == 0) //throw Money::Division_by_zero{};
+    if (rhs.get_amount() == 0) error("operator/: Divide by zero");
 
     return (double(lhs.get_amount()) / rhs.get_amount());
 }
@@ -72,7 +64,7 @@ bool operator!=(const Money &lhs, const Money &rhs) {
 std::ostream& operator<<(std::ostream& os, const Money& m) {
 
     os << unit << m.get_dollars() << '.';
-    if (abs(m.get_cents()) < 10) os << '0';      // to get $1.05 instead of $1.5
+    if (abs(m.get_cents()) < 10) os << '0';    
     os << abs(m.get_cents());
 
     return os;

@@ -1,7 +1,7 @@
 #ifndef MONEY_H
 #define MONEY_H
 
-#include "../../include/std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 constexpr char unit{ '$' };
 long int my_round(double d);
