@@ -57,7 +57,7 @@ int main() {
             }
         }
 
-        std::cout << "Her are the " << kNum_pairs << "(x,y) points:\n";
+        std::cout << "Here are the " << kNum_pairs << "(x,y) points:\n";
         for(const auto &i : original_points) {
             std::cout << '(' << i.x << ',' << i.y << ")\n";
         }
