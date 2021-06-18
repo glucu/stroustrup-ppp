@@ -8,11 +8,12 @@
  * result is still readable; try it on your friends.
  */
 
-const std::string kFile_input{"exercise3-input.txt"};
+const std::string kFile_input{"dickens.txt"};
 const std::string kFile_output{"exercise3-output.txt"};
 
-
 std::vector<std::string> read_file(std::ifstream &ifs) {
+// reads in from kFile_input and stores each line
+// in vector and returns it.
 
     std::vector<std::string> temp;
     while(!ifs.eof()) {
@@ -28,6 +29,7 @@ std::vector<std::string> read_file(std::ifstream &ifs) {
 }
 
 void write_file(const std::vector<std::string> &lines) {
+// write out the change to kFile_output
 
     std::ofstream ofs{kFile_output};
     if(ofs.rdstate() != 0) error("can't write to file, ", kFile_output);
