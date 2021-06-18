@@ -1,4 +1,4 @@
-#include "std_lib_facilities.h"
+#include "../include/std_lib_facilities.h"
 
 /* Chapter 11: exercise 10
  *
@@ -42,7 +42,7 @@ int main() {
 
     try {
 
-        std::cout << "Please enter a series of whitespace-separated strings\n (Followed by " << kStop << " to stop):\n";
+        std::cout << "Please enter a series of strings\n (Followed by " << kStop << " to stop):\n";
         std::string s;
         while(std::getline(std::cin, s) && s != kStop) {
             std::vector<std::string> substrings{ split(s) };
