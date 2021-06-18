@@ -16,6 +16,8 @@ const std::string kFile_output{"exercise6-output.txt"};
 const std::string whitespace{".;,?-'"};
 
 bool is_whitespace(char ch) {
+// returns true if ch is whitespace;
+// otherwise return false.
 
     for(const char &c : whitespace) {
         if(c == ch) return true;
@@ -25,6 +27,8 @@ bool is_whitespace(char ch) {
 }
 
 void write_file(const std::string &word) {
+// write each modified string by appending it to
+// kFile-output.
 
     std::ofstream ofs{kFile_output, std::ios_base::app};
     if(ofs.rdstate() != 0) error("can't open file, ", kFile_output);
@@ -33,6 +37,8 @@ void write_file(const std::string &word) {
 }
 
 std::vector<std::string> read_lines(std::ifstream &ifs) {
+// reads in each line from kFile_input and stores it in a
+// vector.
 
     std::vector<std::string> temp;
     std::string line;
@@ -49,6 +55,10 @@ std::vector<std::string> read_lines(std::ifstream &ifs) {
 }
 
 void parse_line(std::string &line) {
+// for each line, parse a word at a time
+// and check each character. If the character
+// is a punctuation, convert it to space; otherwise
+// skip it.
 
     std::stringstream ss{line};
     std::string word;
