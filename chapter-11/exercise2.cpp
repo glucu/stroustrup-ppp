@@ -7,7 +7,7 @@
  * Hint: getline().
  */
 
-const std::string kInput_file{"exercise2-input.txt"};
+const std::string kInput_file{"jurassic.txt"};
 
 void remove_punct(std::vector<std::string> &lines) {
 // Converts punctuation to whitespace
@@ -35,6 +35,7 @@ std::string tolower(std::string &word) {
 }
 
 std::vector<std::string> read_lines(std::ifstream &ifs) {
+// reads in from kInput_file and returns a vector of strings.
 
     std::vector<std::string> temp;
     while(ifs) {
@@ -48,6 +49,7 @@ std::vector<std::string> read_lines(std::ifstream &ifs) {
 }
 
 bool search_word(const std::string &user_word, const std::string &line) {
+// returns true if user_word is found in line; otherwise return false.
 
     std::istringstream iss{line};
     for(std::string s; iss >> s;) {
