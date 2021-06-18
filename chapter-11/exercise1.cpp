@@ -6,7 +6,7 @@
  * case, producing a new file.
  */
 
-const std::string kInput_name{"exercise1-input.txt"};
+const std::string kInput_name{"jurassic.txt"};
 const std::string kOutput_name{"exercise1-output.txt"};
 
 std::string tolower(std::string &word) {
