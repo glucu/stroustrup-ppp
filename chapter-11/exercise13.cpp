@@ -32,9 +32,9 @@ void write_file(const std::string &oname, const std::vector<std::string> &vs) {
     if(ofs.rdstate() != 0) error("can't open file, ", oname);
 
     for(size_t i{vs.size()-1}; i >= 0; --i) {
-        if(i % 10 == 0) ofs << '\n';
-        
         ofs << vs[i] << ' ';
+        
+        if(i != 0 && i % 10 == 0) ofs << '\n';
     }
 }
 
