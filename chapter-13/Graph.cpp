@@ -305,6 +305,67 @@ namespace Graph_lib {
 		Arc::draw_lines();
 	}
 
+	void Box::draw_lines() const
+	{
+		if (fill_color().visibility()) {   
+			fl_color(fill_color().as_int());
+
+			fl_rectf(point(0).x + rad, point(0).y, w - 2 * rad, rad);
+			fl_rectf(point(0).x, point(0).y + rad, w, h - 2 * rad);
+			fl_rectf(point(0).x + rad, point(0).y + h - rad, w - 2 * rad, rad);
+
+			fl_pie(point(0).x, point(0).y, 2 * rad, 2 * rad, 90, 180);
+			fl_pie(point(0).x + w - 2 * rad, point(0).y, 2 * rad, 2 * rad, 0, 90);
+			fl_pie(point(0).x, point(0).y + h - 2 * rad, 2 * rad, 2 * rad, 180, 270);
+			fl_pie(point(0).x + w - 2 * rad, point(0).y + h - 2 * rad, 2 * rad, 2 * rad, 270, 360);
+
+			fl_color(color().as_int());  
+		}
+
+		if (color().visibility()) {
+			fl_color(color().as_int());
+
+			fl_line(point(0).x + rad, point(0).y,
+				point(0).x + w - rad - 1, point(0).y);
+			fl_line(point(0).x, point(0).y + rad,
+				point(0).x, point(0).y + h - rad - 1);
+			fl_line(point(0).x + rad, point(0).y + h - 1,
+				point(0).x + w - rad, point(0).y + h - 1);
+			fl_line(point(0).x + w - 1, point(0).y + rad,
+				point(0).x + w - 1, point(0).y + h - rad);
+
+			fl_arc(point(0).x, point(0).y, 2 * rad, 2 * rad, 90, 180);
+			fl_arc(point(0).x + w - 2 * rad, point(0).y, 2 * rad, 2 * rad, 0, 90);
+			fl_arc(point(0).x, point(0).y + h - 2 * rad, 2 * rad, 2 * rad, 180, 270);
+			fl_arc(point(0).x + w - 2 * rad, point(0).y + h - 2 * rad, 2 * rad, 2 * rad, 270, 360);
+		}
+	}
+
+	void Arrow::draw_lines() const
+	{
+		Line::draw_lines();
+
+		double line_len =
+			sqrt(double(pow(point(1).x - point(0).x, 2) + pow(point(1).y - point(0).y, 2)));
+
+		double pol_x = 8 / line_len * point(0).x + (1 - 8 / line_len) * point(1).x;
+		double pol_y = 8 / line_len * point(0).y + (1 - 8 / line_len) * point(1).y;
+
+		double pl_x = pol_x + 4 / line_len * (point(1).y - point(0).y);
+		double pl_y = pol_y + 4 / line_len * (point(0).x - point(1).x);
+
+		double pr_x = pol_x + 4 / line_len * (point(0).y - point(1).y);
+		double pr_y = pol_y + 4 / line_len * (point(1).x - point(0).x);
+
+		if (color().visibility()) {
+			fl_begin_complex_polygon();
+			fl_vertex(point(1).x, point(1).y);
+			fl_vertex(pl_x, pl_y);
+			fl_vertex(pr_x, pr_y);
+			fl_end_complex_polygon();
+		}
+	}
+
 
 	std::map<string, Suffix::Encoding> suffix_map;
 

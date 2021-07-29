@@ -370,6 +370,36 @@ namespace Graph_lib {
 		int angle1, angle2;
 	};
 
+	// Exercise 2
+	struct Box : Shape {
+		Box(Point pp, int ww, int hh) :w(ww), h(hh)
+		{
+			if (h <= 0 || w <= 0) error("Bad rectangle: non-positive width or height");
+			add(pp);
+			rad = w < h ? w / 4 : h / 4;
+		}
+		Box(Point pp, int ww, int hh, int rr) :w(ww), h(hh), rad(rr)
+		{
+			if (h <= 0 || w <= 0) error("Bad rectangle: non-positive width or height");
+			if (rad > (w > h ? h : w) / 2) error("box corner radius too large");
+			add(pp);
+		}
+		void draw_lines() const;
+
+		int height() const { return h; }
+		int width() const { return w; }
+	private:
+		int w;
+		int h;
+		int rad;
+	};
+
+	// Exercise 3
+	struct Arrow : Line {
+		Arrow(Point p1, Point p2) :Line(p1, p2) { }
+		void draw_lines() const;
+	};
+
 	struct Bad_image : Fl_Image {
 		Bad_image(int h, int w) : Fl_Image(h, w, 0) { }
 		void draw(int x, int y, int, int, int, int) { draw_empty(x, y); }
