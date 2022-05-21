@@ -9,40 +9,49 @@
  * functions.
  */
 
-char* strdup(const char *s)
-{ // makes a copy of s and returns that copy
-  // pre-condition: s must not be null.
+int getSize(const char *s) {
+// returns the size of s
 
-    if(!s) return nullptr;
-
-    int len{};
-    int k{};
-    while(s[k++]) {
-        ++len;
+    int n{};
+    while(s[n]) {
+        ++n;
     }
 
-    char *tmp{ new char[len+1] };
-    k = 0;
-    while(s[k] != '\0') {
-        tmp[k] = s[k];
-        ++k;
+    return n;
+}
+
+char* strdup(const char *s) { 
+// makes a copy of s and returns that copy
+// pre-condition: s must not be null.
+    
+    if(!s) {
+        return nullptr;
     }
 
-    tmp[len] = '\0';
+    auto n{ getSize(s) };
+
+    auto *tmp{ new char[n+1] };
+    n = {};
+    while(s[n]) {
+        tmp[n] = s[n];
+        ++n;
+    }
+    
+    tmp[n] = '\0';
 
     return tmp;
 }
 
 const std::string kQuit{"quit"};
 
-int main() 
-{
+int main() {
+
     try {
 
-        std::string str;
-        char *pc;
-        while(std::getline(std::cin, str) && str != kQuit) {
-            pc = strdup(&str[0]); 
+        std::string line;
+        char *pc{};
+        while(std::getline(std::cin, line) && line != kQuit) {
+            pc = strdup(line.c_str()); 
             if(pc) {
                 std::cout << pc << '\n';
             }
@@ -52,6 +61,7 @@ int main()
 
             delete[] pc;
         }
+
 		return 0;
 	}
 	catch (const std::exception& e) {
