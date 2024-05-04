@@ -1,0 +1,84 @@
+address: Memory address (a value) that is the starting location of an object in main memory. The value is usually in hexadecimal notation.
+
+address-of operator: Denoted by the symbol & is used to return the memory address of an object that is stored in main memory that is usually stored in a pointer.
+
+allocation: The acquiring of a resource. Allocation also happens when you get a resource from the free store.
+
+cast: Explicit type conversion. To cast something is to mean to convert a type to a target type.
+    - static_cast: cast a type to a target type. Ex: int -> double ; double -> int
+    - const_cast: can "cast away const"
+    - reinterpret_cast: can cast between unrelated types, such as int and double*.
+
+container: a data structure that holds elements (other objects) of a type.
+
+contents-of operator: Also known as the dereference operator * that is used to access the under-lying object to which a pointer points to.
+
+deallocation: The inverse of allocation. To deallocate means to free the resource back to main memory.
+
+delete: an operator that takes a pointer argument (to a scalar object) that points to an object that was allocated on the free store and frees (deallocates) it.
+
+delete[]: an operator that takes a pointer argument (to a dynamically allocated array) and frees (deallocates) it.
+
+dereference: another name for "contents-of operator" See above.
+
+destructor: a special member function that gets called automatically when an object of the class type goes out of scope.
+    - Has same name as the class
+    - takes no arguments (empty parameter list)
+    - is prefixed with the ~ sign. Ex: ~Foo() {}
+    - cannot be overloaded
+    - body of the destructor can be empty (no work to do)
+    - responsible for freeing resources
+
+free store: synonym for heap is a memory region where objects get alloocated at runtime via dynamic memory allocation.
+
+link: a list is made out of “links” (usually called node) where each link holds some information and pointers to other links.
+
+list: a list is made out of “links” (nodes) where each link holds some information and pointers to other links.
+
+member access ->: The arrow operator is used to access a member of a class through a pointer.
+
+struct Foo {
+    string s;
+};
+
+int main() {
+
+    Foo *ptr = new Foo{"Hi there"};
+    ptr->s = "Hello there"; // same as: (*ptr).s = "Hello there";
+    cout << ptr->s << '\n';
+    delete ptr;
+}
+
+member destructor: The member's destructor that gets invoked when the object (class) in which the member is apart of goes out of scope. Ex: string, vector, map etc
+
+memory: main memory (RAM - Random Access Memory) is a sequence of bytes numbered from 0 to the last byte minus one. Each byte resides in a cell (8 bits) with an associaoted memory address
+        which denotes the location of that cell. instructions (executables), data (objects) are stored in main memory that will be processed by the CPU. Main memory is also split into different
+        regions (segments): static storage, heap storage, stack storage, and code storage.
+
+memory leak: when a resource is allocated from the free store using the new operator, but is not freed (deallocated) by the delete operator, the resource is now leaked, this memory leak occurs.
+
+new: operator that allocates an array of elements or scalar type from the heap store at run-time and returns a pointer to the first memeory address of that allocated object or objects (array).
+
+null pointer: a pointer that does not point to anything. Calling delete on a nullptr has no effect.
+
+pointer: a type whos value is the address of an object in memory of the same type and can be accessed indirectly via the dereference operator.
+
+range: a range of elements that can be accessed within a container base on its boundaries. These boundaries specify the starting and ending points of the range, allowing access to the elements contained within that    interval. Access outside this range results in a out-of-range error.
+
+resource leak: programming error causing a resource not to be released. Memory leak is a type of resource leak.
+
+subscripting: The subscript operator[] allowd access to an element in a container (such as an array, vector, pointer to an array etc).
+
+subscipt []: provides access to an object pointed-to by the pointer or array operand.
+
+this: pointer to the object for which a non-static member function is called. It is a const pointer that gets passed implicitly.
+
+type conversion: converting one type to another type (target type).
+
+virtual destructor: a destructor declared virtual to ensure that the proper derived class destructor is called if an object of a derived class is deleted through a pointer to a base class. If a class has any virtual
+                    functions, it should have a virtual destructor
+
+void*: Generic pointer. The type void* means “pointer to some memory that the compiler doesn’t know the type of.” We use void* when we want to
+                        transmit an address between pieces of code that really don’t know each other’s types. Examples are the “address” arguments of
+                        a callback function (§16.3.1) and the lowest level of memory allocators (such as the implementation of the new operator).
+                        There are no objects of type void, but as we have seen, we use void to mean “no value returned”:

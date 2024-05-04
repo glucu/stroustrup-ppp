@@ -1,0 +1,52 @@
+abstract class: A generalization of a concept/idea that is to be defined by a more specialized concept (concrete class). Abstract class: Shape ; specialized concept: Polygon
+
+access control: determines how the members of a class can be accessed. Whether through an instance of that class, classes (concrete classes) that derive from that class, etc.
+    - private: if a member is private, its name can be used only by members of the class in which it is declared.
+    - protected: if a member is protected, its name can be used only by members of the class in which it is declared and members of classes derived from that.
+    - public: if a member is public, its name can be used by all functions.
+
+base class: a class that provides the needed facilities for classes that derive from it. Usually implemented as an abstract class.
+
+derived class: also known as a "sub-class" inherits the facilities from a base class using the : public <base_class_name> notation
+
+dispatch: also known as run-time polymorphism, dynamic dispatch, or run-time dispatch is a technique used at run-time when a function (virtual function) is called and is determined at run-time based on the type of the object used.
+
+encapsulation: having the implementation details hidden (data members) under the private access specifier and only accessed through the class's public interface.
+
+inheritance: a way to build one class from another so that the new class can be used in place of the original. For
+example, Circle is derived from Shape, or in other words, “a Circle is a kind of Shape” or “Shape is a base of
+Circle.” The derived class (here, Circle) gets all of the members of its base (here, Shape) in addition to its own. This
+is often called inheritance because the derived class “inherits” all of the members of its base. In some contexts, a
+derived class is called a subclass and a base class is called a superclass.
+
+mutability: ability to mutate data. Being able to modify something. updating an existing object after creation for example
+
+object layout: An object's layout refers how the data members of an object of a class is arranged in main memory. A sub-class that derives from a super-class has the layout of the base class's data members,
+               plus its own within its object (if any).
+How are objects laid out in memory? As we saw in §9.4.1, members of a class define the layout of objects: data members are
+stored one after another in memory. When inheritance is used, the data members of a derived class are simply added after those
+of a base.
+
+polymorphism: polymorphism (runtime polymorphism) is the technique of finding which virtual function to call at runtime.
+
+private: if a member is private, its name can be used only by members of the class in which it is declared.
+
+protected: if a member is protected, its name can be used only by members of the class in which it is declared and members of classes derived from that.
+
+public: if a member is public, its name can be used by all functions.
+
+pure virtual function: a virtual function that defines a class as an abstract class and every sub-class that derives from it must override it. It has the suffix: "= 0;" to indicate its a pure virtual function.
+
+subclass: another name for a class that derives a base class;
+
+superclass: another name for base class
+
+virtual function: a function in which any derived class can override. Must match exact signature of the function it is trying to override.
+
+virtual function call: dynamic dispatch will determine which function to call at runtime by using a virtual pointer to a virtual table that contains entries to virtual functions.
+
+virtual function table: To handle a virtual function call, we need (and have) one more piece of data in a Shape object: something to tell which
+                        function is really invoked when we call Shape’s draw_lines(). The way that is usually done is to add the address of a table
+                        of functions. This table is usually referred to as the vtbl (for “virtual table” or “virtual function table”) and its address is often
+                        called the vptr (for “virtual pointer”). We discuss pointers in Chapters 17–18; here, they act like references. A given
+                        implementation may use different names for vtbl and vptr.

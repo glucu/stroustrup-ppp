@@ -1,0 +1,58 @@
+There are two types of processes: Independent processes (processes that do their own thing), and cooperating processes (processes that work together). 
+Cooperating processes need to be able to communicate to each other in some way. Through inter-process communcation (IPC). There are two models of this. The first is "shared memory". 
+A critical region in which cooperating processes can access to read and write data. This is one form of how processes can communicate and exchange data.
+
+*************
+
+inter-process communication (IPC): mechanism for two or more processes to communicate and share data with each other.
+
+Two models to achieve IPC:
+	- shared memory (critical region): a region of memory, shared by cooperating processes. Processes exchange information by reading and writing data to the shared region
+	- message queue model: communcation takes place by means of messages exchanged between the cooperating processes.
+
+race conditions: when two or more processes access the shared memory more or less simultaneously, and the output depends on who runs precisely whne.
+
+busy waiting: continuously testing a variable until some value appears.
+
+mutual exclusion: prohibit (ban) more than one process from reading and writing the shared data at the same time.
+	- lock variable: a single, shared (lock) variable, initially zero. When process A needs to access its critical region, it first checks if the lock is set to 0, if so, Process B sets it to 1 and enters the critical region. lock set to 1
+	  means a process is it the critical region and another process, say process B cannot enter.
+    - peterson's algorithm: is a concurrent programming algorithm for mutual exclusion that allows two or more processes to share a single-use resource without conflict, using only shared memory for communication
+	
+	1. Test-and-Set Lock (TSL) Instruction: When a process wants to enter the critical section, it executes the TSL instruction. 
+	   This instruction typically takes a memory location (representing the lock) as an argument. The TSL instruction atomically reads the current value of the lock and sets it to a specified value (usually 1), 
+	   effectively indicating that the critical section is now locked.
+
+    2. Using the TSL Instruction: The process executing the TSL instruction checks the value returned. If the value was previously 0, it means that the critical section was not locked, and the process enters the critical section. 
+	   If the value was 1, it means that the critical section was already locked by another process, and this process needs to wait or retry.
+
+    3. Looping: The process typically loops, repeatedly attempting the TSL operation until it successfully locks the critical section. This ensures that only one process can enter the critical section at a time.
+
+    4. Register Usage: The TSL instruction often does not directly use a register to compare to 0. Instead, it usually sets a flag based on the result of the operation, indicating whether the lock was successfully acquired or not.
+	
+TSL instruction:
+
+enter region:
+	TSL REGISTER,LOCK
+	CMP REGISTER,#0
+	JNE enter region
+	RET
+	
+leave region:
+	MOVE LOCK,#0
+	RET
+	
+XCHG (exchange/swap) instruction:
+enter region:
+	MOVE REGISTER,#1
+	XCHG REGISTER,LOCK
+	CMP REGISTER,#0
+	JNE enter region
+	RET
+	
+leave region:
+	MOVE LOCK,#0
+	RET
+	
+
+	- producer-consumer problem: Two processes share a common, fixed-sized buffer. One of them, the producer, puts information into the buffer, and the other one, the consumer, takes it out. This is base on sleep and wakeup calls. 

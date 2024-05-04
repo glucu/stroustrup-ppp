@@ -1,0 +1,34 @@
+bad(): stream state that indicates that something unexpected and serious happened (e.g., a disk read error)
+
+buffer: a block of memory that serves as a temporary placeholder
+
+clear(): a member function of the istream type that sets the error state flag (stream state) back to the ios_base::goodbit (by default) otherwise it sets it to any of the constants defined in the ios_base that you pass
+
+close(): member function of the stream type that explicitly closes the associated file
+
+device driver: a software program at the kernal level that is attached to a particular hardware device in a computer
+
+eof(): a member function of the basic_ios type that indicates that the associated stream reached the end of file
+
+fail(): stream state that indicates that something unexpected happened (e.g., we looked for a digit and found 'x')
+
+file: at the basic level, a file is a sequence of bytes with an associated file format (a standard way that information is encoded for storage in a computer file)
+
+good(): stream state that indicates that the stream ran with no errors and that future I/O operations are available
+
+ifstream: basic_ifstream type that you use to read the contents of a file into your program
+
+istream: input stream that deals with streams of input such as ifstream, cin, etc
+
+ofstream: basic_ofstream type that you use to write to a file
+
+open(): member function of the stream type that explicitly opens an associated file
+
+ostream: output stream that deals with streams of output such as ofstream, cout, etc
+
+stream state: four possible states that indicates the status of a stream: good(), fail(), eof(), or bad()
+
+structured file: files that organize and represent data in a well-defined and systematic manner. Think of HTML and XML
+
+unget(): member function of the istream type that makes the most recently extracted character available again by placing it back in the istream buffer
+

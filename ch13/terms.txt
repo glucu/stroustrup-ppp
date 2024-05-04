@@ -1,0 +1,44 @@
+closed shape: a shape in which the last point connects to the first point by drawing a line-segment
+
+color: defined by two components: color type and transparency 
+
+ellipse: a kind of shape with a center and a major and minor axis.
+
+fill: a property that allows the inside of a shape (Rectangle) to be filled with a color
+
+font: Font type can be used to change the font of a Text object. That is, setting a style to the text
+
+font size: the size of the text object measured in pixels in how big/small the characters appear in the text
+
+GIF: Graphics Interchange Format that supports both animated and static images.
+
+image: a n-by-m grid of pixels
+
+image encoding: converting an image file to a binary representation to be stored in a digital computer. Usually stored in a image format like GIF, or JPEG etc
+
+invisible: an invisible line that cannot be seen
+
+JPEG: a graphic image file compressed with lossy compression using the standard developed by the ISO/IEC Joint Photographic Experts Group
+
+line: two end points that forms a line-segment.
+
+line style: Line style type of a line. Style of lines can range from solid, dotted, dash, etc
+
+open shape: a shape in which the last point does not connect to the first point, thus leaving an open shape
+
+point: a position (location) in a two dimensional space that is defined by a x and y coordinate.
+
+polygon: a closed shape in which straight line segments do not intersect each other.
+
+polyline: a series of connected line-segments
+
+unnamed object: a temporary object
+
+Vector_ref:
+Basically, Vector_ref simulates a vector of references. You can initialize it with references or with pointers:
+• If an object is passed to Vector_ref as a reference, it is assumed to be owned by the caller who is responsible for its lifetime (e.g., the object is a scoped variable).
+• If an object is passed to Vector_ref as a pointer, it is assumed to be allocated by new and it is Vector_ref’s
+  responsibility to delete it.
+  
+An element is stored as a pointer — not as a copy of the object — into the Vector_ref and has reference semantics. For
+example, you can put a Circle into a Vector_ref<Shape> without suffering slicing.

@@ -1,0 +1,32 @@
+built-in types: types that are part of the core languge that the compiler knows how to represent objects of the type and which operations can be done on it.
+
+class: keyword that lets a programmer define a user-defined type (UDT) composed on members. Those members can be built-in types, data members, other UDTs, member functions. 
+
+const: keyword that denotes an entity (object) as a constant whos value cannot change after initialization. const member functions do not modify the object's state 
+
+constructor: a special member function with the same name as the class that is invoked upon object creation that initializes its members. Also used to establish an invariant, acquire resources.
+
+destructor: a special member function with the same name as the class that is preceded by a tilde (~) that takes zero arguments. It is invoked when an object of the class type is destroyed (goes out of scope)
+and performs clean up.
+
+enum: keyword that is used to declare an enumeration. An enumeration is a user-defined type with a set of named values (symbolic constants). Often used to define named constants for better code readability
+
+enumeration: see <b>enum</b> above
+
+enumerator: a name that identifies a value of an enumeration
+
+helper function: a design concept that often take arguments of the classes that they are helpers of
+
+implementation: the implementation is the class's private members that define the representation of the class 
+
+in-class initializer: directly initializing the members of a class 
+
+inlining: function that is declared inline using the inline keyword. Marking a function as inline is a request to the compiler to expand the function inlined by replacing the function call with the code of the function, optimizing code.
+
+inteface: a class interface refers to the public members (mostly member functions) that the user cares most of and can call directly. Used to access the private members directly through the public interface.
+
+invariant: a condition of the representation of an object (the objects state) that should hold each time an interface function is called; usually established by a constructor.
+
+struct: keyword that defines a user-defined type where the members are public by default. Most often used for data structures without member functions or class invariants, or "plain old data types."
+
+

@@ -1,0 +1,39 @@
+array: a homogeneous sequence of elements stored in contiguous memory; a data structure.
+
+array initialization: defining an array and giving it a set of initial values.
+
+copy assignment: The copy assignment operator is a non-template non-static member function with the name operator= that can be called with an argument of the same
+                 class type and copies the content(rhs) of the argument without mutating the argument. By default copy assignment performs memberwise copying.
+    - memberwise copy: copying a class object by copying each of its members in turn, using proper copy constructors or copy assignments. That's the default meaning of copy.
+
+copy constructor: A copy constructor is a constructor which can be called with an argument of the same class type and copies the content of the argument without mutating the argument. Used for initialization.
+                  Default behavior is memberwise initialization (pointer semantics).
+
+deep copy: copies what a pointer points to so that the two pointers now refer to distinct objects. That’s what vectors,
+           strings, etc. do. We define copy constructors and copy assignments when we want deep copy for objects of our classes (value semantics (they copy the values pointed to)).
+
+default constructor: a special non-static member function with the same name as the class and one that takes no arguments (cannot be overloaded). The default constructor is called to default
+                     initialize the object of a class type by giving it a default value.
+
+esstentials operations: Deciding which constructors a class should have, whether it should have a destructor, and whether you need to provide copy and move operations.
+                        There are seven essential operations to consider:
+
+    • Constructors from one or more arguments
+    • Default constructor
+    • Copy constructor (copy object of same type)
+    • Copy assignment (copy object of same type)
+    • Move constructor (move object of same type)
+    • Move assignment (move object of same type)
+    • Destructor
+
+explicit constructor: keyword used to define a constructor so that it isn't used for implicit conversions. Cannot be used for implicit conversions and copy-initialization.
+
+move assignment: like the copy assignment, but the argument is an r-value reference (&&) that transfers (steals) the contents of the right-hand side to the object of the same type on the left-hand side. Setting the rhs
+                 object in a "moved-from" state that usually has a well-defined state.
+
+move constructor: like the copy constructor but instead transfers (steals) the contents of the right-hand side object, setting it to a moved-from" state.
+
+palindrome: a word or phrase that reads the same forward and backwards.
+
+shallow copy: copies only a pointer so that the two pointers now refer to the same object. That’s what pointers and references do. Shallow copying occurs when the default copy constructor/assignment
+              is used (memberwise copy/initialization). Also known as pointer semantics (they copy addresses).

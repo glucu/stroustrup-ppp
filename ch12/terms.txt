@@ -1,0 +1,30 @@
+color: represented using a combination of red, green, and blue components, known as RGB. THe RGB model allowed different types of colors by using the 3 components of varying
+       intensities.
+
+coordinates: a pair of values that denotes a point (position) in a 2-dimensional plane. The x (horizontal) coordinate starts at the top left with the value 0 and increases from left-to-right. The y    (vertical) coordinate starts at 0 and increases from top-to-bottom.
+
+display: a program (display engine) takes the objects attached to the window and draws them on the screen.
+
+fill color: "fill" a rectangle with a color or any other closed shape.
+
+FLTK: Fast-Light-Toolkit (pronounced as full-tick) is a cross-platform C++ GUI toolkit Library that offers facilities for graphics programming and GUI programming.
+
+graphics: refers to the creation, manipulation, and representation of visual elements (objects in memory) on a screen.
+
+GUI: Graphical User interface is a type of interface that allows users to interact with electronic devices graphical icons and visual indicators.
+
+GUI Library: A library that provides facilities for Graphical User Interface. See GUI above.
+
+HTML: a markup language that allows you to express layout notions in plain text.
+
+Image: A visual representation or depiction of an object, scene, or data, often in the form of a two-dimensional array of pixels, where each pixel corresponds to a specific color or intensity.
+
+JPEG: Joint Photographic Experts Group; a commonly used image compression standard that reduces file sizes while maintaining reasonable image quality, particularly suited for photographs and natural images.
+
+Line Style: The visual appearance of a line in graphics, describing characteristics such as its thickness, color, and pattern (e.g., solid, dashed, or dotted) used to represent shapes or boundaries.
+
+Software Layer: A distinct level or component in a software architecture that provides specific functionalities or services, often organized hierarchically to promote modularity and ease of maintenance.
+
+Window: A graphical user interface element that represents a rectangular area on a display screen, typically containing an application's content and controls, allowing users to interact with the software.
+
+XML: Extensible Markup Language; a text-based markup language that defines rules for encoding documents in a format that is both human-readable and machine-readable, commonly used for data interchange and configuration purposes.

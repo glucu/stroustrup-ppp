@@ -1,0 +1,5 @@
+"The quick brown fox jumps over the lazy dog." said the instructor 
+She asked  "Did you bring your umbrella? It might rain today."
+Programming can be challenging  but it s also very rewarding!
+Don t forget to use proper indentation in your code 
+"The 'as-if' rule should be followed," explained the teacher 

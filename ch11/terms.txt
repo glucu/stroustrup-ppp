@@ -1,0 +1,37 @@
+binary: base-2 number system in which data is represented with only two symbols (0 and 1) in which each bit in a sequence of bits has a place-value of powers of 2
+
+character classification: a way to categorize what a character is: is it a digit? a letter? whitespace? using the standard library functions like isupper(), isdigit() etc
+
+decimal: base-10 number system where a digit is represented with one of 10 symbols [0-9]. Each digit in a number has a place-value of powers of 10
+
+defaultfloat: floating-point format that outputs the number in either fixed or scientific form to give the numerically most accurate representation,
+              with the precision of the defaultfloat (6 precision).
+
+file positioning: select a specific place in a file for reading or writing by altering the read or write position within the file.
+                  Usually done using the seekg() and seekp() functions of the istream and ostream respectfully.
+
+fixed: floating-point format that prints the number of precision after the decimal point (defaults to 6 precision after the decimal point).
+
+hexadecimal: base-16 number system that uses 16 symbols [0-9, A-F] that represents data. Each place-value of a hex symbol is a power of 16. Mostly used
+             when reading memory addresses. This is so because each hex symbol can represent 4-bits (a nibble), so two hex symbols can be used to represent 1 byte.
+
+line-oriented input: Line-oriented input in C++ involves reading input from the standard input stream on a per-line basis using the getline() function,
+                     allowing for the processing of entire lines, which can be useful when dealing with sentences, commands, or scenarios where preserving the entire line structure is important.
+
+manipulator: To change the behavior of a stream
+
+nonstandard separator: separators that are not standard for an istream by default. These separators encompass any characters other than whitespace and are used to separate words or tokens during input operations.
+
+noshowbase: manipulator that reverses the action of showbase that does not use the prefixes for (set by default).
+
+octal: base-8 number system that represents data using the 8 symbols [0-7]. Each digit's position represents a power of 8. Octal is less commonly used today compared
+       to decimal (base-10) and hexadecimal (base-16), but it is   still occasionally encountered in computing contexts. In programming,
+       octal literals are often denoted by a leading '0' (e.g., 075), and in some programming languages, such as C and C++, a leading '0' indicates an octal constant.
+
+output formatting: As programmers, we aim at making our output as clear and as close as possible to the expectations of the “consumers” of our program.
+
+scientific: use mantissa and exponent notation; the mantissa is always in the [1-10) range; there is a single nonzero digit before the decimal point.
+
+setprecision(): Allows a programmer to set the precision using the manipulator setprecision().
+
+showbase: manipulator that adds the prefix 0 for octal and 0x for hexadecimal.

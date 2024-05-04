@@ -1,0 +1,62 @@
+activation record: a data structure that is created when a function is called. An activation record (stack frame) contains data (local variables/parameters, return address etc) about that function
+that gets pushed onto a stack and popped off the stack when the function returns.
+
+argument: a value/object that is passed as input to a function that is used to initialize the function's parameter(s).
+
+call stack: a data structure that inserts and removes elements at one end of the stack following the Last-In-First-Out principal.
+
+class scope: The region of text within the class.
+
+const: keyword that is used to make a variable a constant where its value must not be changed and must be initialized.
+
+constexpr: like const but the variable must be initialized by a constant expression and is then evualated at compile-time.
+
+declaration: Introducing a name into a scope. The type of the name must be specified.
+
+definition: declaration that also allocates memory for that object with or without a value.
+
+extern: keyword used to indicate that the definition of an entity being declared is defined elsewhere.
+
+forward declaration: a function declaration
+
+function: a named sequence of statements that can be invoked/called given arguments and that it may return a value. Used to give a name to a computation.
+
+function definition: a function declaration that also has a body.
+
+global scope: the region of text that is not nested inside any other scope
+
+header file: a file that contains a collection of declarations that can then be included by the #include directive in source files that uses it.
+
+initializer: giving a variable an initial value or a function body.
+
+local scope: a region of text inside a pair of braces {} like a function body.
+
+namespace: a method for preventing name conflicts (clashes) in large projects.
+
+namespace scope: Entities declared inside a namespace block are placed in a namespace scope, which prevents them from being mistaken for identically-named entities in other scopes.
+
+nested block: a block that is nested within another block.
+
+parameter: a local variable of a function that is initialized by the argument passed to the function.
+
+pass-by-const-reference: the reference part means passing the objects's address instead of making a copy of its value. The const part tells the function to not modify the object through that reference.
+
+pass-by-reference: The argument that is passed to the function passes its address rather than a copy of its value to the functions parameter.
+
+pass-by-value: The parameter of a function is initialized with the copy of the argument's value. 
+
+recursion: a function that calls itself directly.
+
+return: a statement that allows you to return without a value to cause a return from a function.
+
+return value: a value that is explicitly returned by the return statement of a function.
+
+scope: a region of program text.
+
+statement scope: e.g., for-statement
+
+technicalities: syntax and semantics that are specific to a given language.
+
+undeclared identifier: An entity that is used that has not be declared beforehand.
+
+
