@@ -30,5 +30,8 @@
 *.out
 *.a.out
 
+# ctags
+tags
+
 # vscode
 .vscode
