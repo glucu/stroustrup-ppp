@@ -28,7 +28,7 @@
 # Executables
 *.exe
 *.out
-*.a.out
+*a.out
 
 # ctags
 tags
